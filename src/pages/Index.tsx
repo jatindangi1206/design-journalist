@@ -7,148 +7,152 @@ import FeaturedArticle from '../components/ui/FeaturedArticle';
 import SectionDivider from '../components/ui/SectionDivider';
 
 const Index = () => {
-  // Mock data for articles
+  // Updated featured article
   const featuredArticle = {
     id: "1",
-    title: "The Architectural Renaissance: How Modern Design is Reshaping Urban Spaces",
-    description: "A deep dive into how contemporary architects are transforming city skylines while addressing environmental concerns and social needs.",
+    title: "Trump's Naval Academy Appointments Intensify Military Oversight Focus",
+    description: "President Trump appointed loyalists, including former press secretary Sean Spicer and valet Walt Nauta, to the Naval Academy Board, intensifying his focus on military oversight.",
     imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    category: "Architecture",
-    date: "May 15, 2023",
-    author: "Alexandra Rivers"
+    category: "Politics",
+    date: "March 15, 2025",
+    author: "Robert Johnson"
   };
 
+  // Updated top stories
   const topStories = [
     {
       id: "2",
-      title: "The Economic Impact of Artificial Intelligence on Global Markets",
-      description: "Economists predict significant shifts in job markets as AI adoption accelerates across industries.",
+      title: "Google Launches Gemini 2.0 Flash and Career Dreamer AI Tools",
+      description: "Google expands its AI portfolio with Gemini 2.0 Flash for developers and Career Dreamer, an AI career-planning tool.",
       imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Technology",
-      date: "May 14, 2023",
+      date: "March 14, 2025",
       author: "Jonathan Chen"
     },
     {
       id: "3",
-      title: "Climate Summit Concludes with New Global Emissions Targets",
-      description: "World leaders agree to ambitious carbon reduction goals amid growing climate concerns.",
+      title: "Government Shutdown Looms as Congress Stalls on Funding",
+      description: "Federal agencies prepare contingency plans as funding deadline approaches, risking a shutdown by March 17.",
       imageUrl: "https://images.unsplash.com/photo-1569163139599-0f4259cc6a52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      category: "Environment",
-      date: "May 13, 2023",
+      category: "Politics",
+      date: "March 13, 2025",
       author: "Sophia Rodriguez"
     },
     {
       id: "4",
-      title: "The Revival of Traditional Craftsmanship in Modern Fashion",
-      description: "Luxury brands turn to heritage techniques as consumers seek authenticity and sustainability.",
+      title: "X (Twitter) Faces Global Outage, Musk Blames Cyberattack",
+      description: "Elon Musk attributed a platform-wide disruption to a 'massive cyberattack' by a 'coordinated group or country'.",
       imageUrl: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      category: "Style",
-      date: "May 12, 2023",
+      category: "Technology",
+      date: "March 12, 2025",
       author: "Marcus Williams"
     }
   ];
 
+  // Updated politics articles
   const politicsArticles = [
     {
       id: "5",
-      title: "Senate Passes Historic Infrastructure Bill After Months of Negotiation",
+      title: "U.S.-Canada Trade Tensions Escalate As Trump Delays Tariffs",
       imageUrl: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Politics",
-      date: "May 11, 2023",
+      date: "March 11, 2025",
       author: "Robert Johnson"
     },
     {
       id: "6",
-      title: "New Voter Access Laws Face Constitutional Challenges in Supreme Court",
+      title: "Marist Poll: 56% Believe Trump Moving Too Quickly on Policies",
       imageUrl: "https://images.unsplash.com/photo-1575672913784-11a7cd4f25df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Politics",
-      date: "May 10, 2023",
+      date: "March 10, 2025",
       author: "Jennifer Adams"
     },
     {
       id: "7",
-      title: "Foreign Policy Reset: Administration Announces New Diplomatic Initiatives",
+      title: "Ukraine-Russia Conflict: Kyiv Seeks Ceasefire After Aid Reduction",
       imageUrl: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
       category: "Politics",
-      date: "May 9, 2023",
+      date: "March 9, 2025",
       author: "Michael Thompson"
     },
     {
       id: "8",
-      title: "Local Governments Implement New Transparency Measures for Police Departments",
+      title: "VA Staffing Cuts: Proposed Layoffs Spark Healthcare Access Concerns",
       imageUrl: "https://images.unsplash.com/photo-1464039397811-476f652a343b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Politics",
-      date: "May 8, 2023",
+      date: "March 8, 2025",
       author: "Sarah Collins"
     }
   ];
 
+  // Updated technology articles
   const technologyArticles = [
     {
       id: "9",
-      title: "Quantum Computing Breakthrough Could Revolutionize Cryptography",
+      title: "EU's AI Transparency Mandate: 'Neural Receipts' Required from March 15",
       imageUrl: "https://images.unsplash.com/photo-1639065455976-fd3c6547da1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Technology",
-      date: "May 7, 2023",
+      date: "March 7, 2025",
       author: "David Kim"
     },
     {
       id: "10",
-      title: "Tech Giants Announce Joint Effort to Combat Misinformation Online",
+      title: "IBM's 10,000-Qubit Processor Achieves Commercial Error Correction",
       imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Technology",
-      date: "May 6, 2023",
+      date: "March 6, 2025",
       author: "Rachel Foster"
     },
     {
       id: "11",
-      title: "Next-Generation Virtual Reality Headsets Promise New Era of Immersion",
+      title: "YouTube Integrates Veo 2 AI Video Generation Into Dream Screen",
       imageUrl: "https://images.unsplash.com/photo-1626387346567-68d15fe6c2f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
       category: "Technology",
-      date: "May 5, 2023",
+      date: "March 5, 2025",
       author: "Brian Mitchell"
     },
     {
       id: "12",
-      title: "Sustainable Tech: How Startups Are Creating Eco-Friendly Electronics",
+      title: "Athena Moon Lander Reaches South Pole with Uncertain Status",
       imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Technology",
-      date: "May 4, 2023",
+      date: "March 4, 2025",
       author: "Emma Garcia"
     }
   ];
 
+  // Updated arts articles
   const artsArticles = [
     {
       id: "13",
-      title: "Retrospective Exhibition Celebrates Pioneer of Abstract Expressionism",
+      title: "Kennedy Center Overhaul: Trump Adds Fox News Hosts to Board",
       imageUrl: "https://images.unsplash.com/photo-1545989253-02cc26577f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Arts",
-      date: "May 3, 2023",
+      date: "March 3, 2025",
       author: "Olivia Wright"
     },
     {
       id: "14",
-      title: "Independent Filmmakers Finding New Audiences Through Streaming Platforms",
+      title: "Glastonbury 2025 Lineup: The 1975, Neil Young, and Olivia Rodrigo",
       imageUrl: "https://images.unsplash.com/photo-1593566629847-acee33dbdcfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
       category: "Arts",
-      date: "May 2, 2023",
+      date: "March 2, 2025",
       author: "Thomas Wilson"
     },
     {
       id: "15",
-      title: "Digital Art Revolution: NFTs Continue to Transform the Art Market",
+      title: "Kara Walker's SFMOMA Exhibit Blends Historical and Futuristic Themes",
       imageUrl: "https://images.unsplash.com/photo-1561046255-d4ef8bd2b4d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Arts",
-      date: "May 1, 2023",
+      date: "March 1, 2025",
       author: "Natasha Davis"
     },
     {
       id: "16",
-      title: "Classical Music Innovation: Symphony Orchestras Embrace Modern Compositions",
+      title: "Kim Kardashian's Outfit Controversy: Bianca Censori-Inspired Look",
       imageUrl: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      category: "Arts",
-      date: "April 30, 2023",
+      category: "Style",
+      date: "February 28, 2025",
       author: "James Peterson"
     }
   ];
@@ -241,3 +245,4 @@ const Index = () => {
 };
 
 export default Index;
+
