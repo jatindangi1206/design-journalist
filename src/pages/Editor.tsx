@@ -5,11 +5,12 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import MetadataForm from '../components/editor/MetadataForm';
 import ContentEditor from '../components/editor/ContentEditor';
+import FileUploader from '../components/editor/FileUploader';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Article, ArticleMetadata, getArticleById, saveArticle, publishArticle } from '@/lib/articleService';
 import { toast } from 'sonner';
-import { Save, Send, Eye, ArrowLeft } from 'lucide-react';
+import { Save, Send, Eye, ArrowLeft, Upload } from 'lucide-react';
 
 const Editor = () => {
   const { id } = useParams();
@@ -28,6 +29,7 @@ const Editor = () => {
   });
   
   const [preview, setPreview] = useState(false);
+  const [showUploader, setShowUploader] = useState(false);
   
   useEffect(() => {
     if (id) {
@@ -92,6 +94,25 @@ const Editor = () => {
     }
     setPreview(!preview);
   };
+
+  const handleExtractedContent = (data: {
+    title: string;
+    content: string[];
+    category: string;
+    author: string;
+  }) => {
+    setArticle(prev => ({
+      ...prev,
+      title: data.title,
+      category: data.category,
+      author: data.author,
+      content: data.content
+    }));
+    
+    setShowUploader(false);
+    setActiveTab('content');
+    toast.success('Document content imported. You can now edit and refine it.');
+  };
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -115,6 +136,18 @@ const Editor = () => {
             </div>
             
             <div className="flex space-x-3">
+              {!showUploader && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowUploader(true)}
+                  className="flex items-center"
+                >
+                  <Upload className="h-4 w-4 mr-2" />
+                  Import Document
+                </Button>
+              )}
+              
               <Button
                 variant="outline"
                 size="sm"
@@ -147,30 +180,21 @@ const Editor = () => {
             </div>
           </div>
           
-          {!preview ? (
-            <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="w-full grid grid-cols-2 mb-6 font-sans">
-                <TabsTrigger value="content">Content</TabsTrigger>
-                <TabsTrigger value="metadata">Metadata</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="content" className="py-2">
-                <ContentEditor 
-                  content={article.content}
-                  pullQuote={article.pullQuote}
-                  onContentChange={handleContentChange}
-                  onPullQuoteChange={handlePullQuoteChange}
-                />
-              </TabsContent>
-              
-              <TabsContent value="metadata" className="py-2">
-                <MetadataForm 
-                  metadata={article}
-                  onChange={handleMetadataChange}
-                />
-              </TabsContent>
-            </Tabs>
-          ) : (
+          {showUploader ? (
+            <div className="animate-fade-in">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="font-serif text-xl">Import Document</h2>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => setShowUploader(false)}
+                >
+                  Cancel
+                </Button>
+              </div>
+              <FileUploader onContentExtracted={handleExtractedContent} />
+            </div>
+          ) : preview ? (
             <div className="animate-fade-in border rounded-md p-8 bg-white">
               {/* Article Preview Header */}
               <header className="mb-8 text-center">
@@ -228,6 +252,29 @@ const Editor = () => {
                 })}
               </div>
             </div>
+          ) : (
+            <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="w-full grid grid-cols-2 mb-6 font-sans">
+                <TabsTrigger value="content">Content</TabsTrigger>
+                <TabsTrigger value="metadata">Metadata</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="content" className="py-2">
+                <ContentEditor 
+                  content={article.content}
+                  pullQuote={article.pullQuote}
+                  onContentChange={handleContentChange}
+                  onPullQuoteChange={handlePullQuoteChange}
+                />
+              </TabsContent>
+              
+              <TabsContent value="metadata" className="py-2">
+                <MetadataForm 
+                  metadata={article}
+                  onChange={handleMetadataChange}
+                />
+              </TabsContent>
+            </Tabs>
           )}
         </div>
       </main>
