@@ -2,10 +2,9 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Upload, FileType, File, FileCheck } from "lucide-react";
+import { Upload, FileType } from "lucide-react";
 import { extractContentFromFile } from '@/lib/articleService';
 import { toast } from 'sonner';
-import { Progress } from "@/components/ui/progress";
 
 interface FileUploaderProps {
   onContentExtracted: (data: {
@@ -19,7 +18,6 @@ interface FileUploaderProps {
 const FileUploader = ({ onContentExtracted }: FileUploaderProps) => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
   
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -35,62 +33,24 @@ const FileUploader = ({ onContentExtracted }: FileUploaderProps) => {
     
     setUploadedFileName(file.name);
     setIsUploading(true);
-    setUploadProgress(10);
     
     try {
-      // Simulate progressive upload/processing
-      const simulateProgress = () => {
-        let progress = 10;
-        const interval = setInterval(() => {
-          progress += Math.floor(Math.random() * 15);
-          if (progress > 90) {
-            clearInterval(interval);
-            progress = 90; // Cap at 90% until actual completion
-          }
-          setUploadProgress(progress);
-        }, 500);
-        return interval;
-      };
-      
-      const progressInterval = simulateProgress();
-      
       const extractedData = await extractContentFromFile(file);
-      clearInterval(progressInterval);
-      setUploadProgress(100);
-      
-      // Small delay to show 100% completion before calling the callback
-      setTimeout(() => {
-        onContentExtracted(extractedData);
-        toast.success('Document successfully processed in New York Times style');
-      }, 500);
-      
+      onContentExtracted(extractedData);
+      toast.success('Document successfully processed');
     } catch (error) {
       toast.error('Failed to process document. Please try again.');
       console.error(error);
     } finally {
-      setTimeout(() => {
-        setIsUploading(false);
-        setUploadProgress(0);
-      }, 1000);
+      setIsUploading(false);
     }
-  };
-
-  const getFileIcon = () => {
-    if (!uploadedFileName) return <FileType className="h-8 w-8 text-nyt-gray" />;
-    
-    // Show a different icon based on upload state
-    if (isUploading) {
-      return <File className="h-8 w-8 text-nyt-blue animate-pulse" />;
-    }
-    
-    return <FileCheck className="h-8 w-8 text-nyt-green" />;
   };
   
   return (
-    <div className="border-2 border-dashed border-nyt-gray-light rounded-md p-6 text-center bg-white transition-all hover:border-nyt-gray">
+    <div className="border-2 border-dashed border-nyt-gray-light rounded-md p-6 text-center bg-white">
       <div className="flex flex-col items-center space-y-4">
         <div className="p-3 bg-nyt-background rounded-full">
-          {getFileIcon()}
+          <FileType className="h-8 w-8 text-nyt-gray" />
         </div>
         
         <div className="text-center">
@@ -102,18 +62,6 @@ const FileUploader = ({ onContentExtracted }: FileUploaderProps) => {
           </p>
         </div>
         
-        {isUploading && (
-          <div className="w-full max-w-xs">
-            <Progress value={uploadProgress} className="h-2" />
-            <p className="text-xs text-nyt-gray mt-1">
-              {uploadProgress < 30 ? 'Uploading...' : 
-               uploadProgress < 60 ? 'Extracting content...' : 
-               uploadProgress < 90 ? 'Formatting to NYT style...' : 
-               'Finalizing...'}
-            </p>
-          </div>
-        )}
-        
         <div className="relative w-full max-w-xs">
           <Input
             type="file"
@@ -124,7 +72,7 @@ const FileUploader = ({ onContentExtracted }: FileUploaderProps) => {
           />
           <Button 
             variant="outline" 
-            className={`w-full relative ${isUploading ? 'bg-gray-50' : 'hover:bg-nyt-background'}`}
+            className="w-full relative"
             disabled={isUploading}
           >
             <Upload className="h-4 w-4 mr-2" />
@@ -132,11 +80,10 @@ const FileUploader = ({ onContentExtracted }: FileUploaderProps) => {
           </Button>
         </div>
         
-        {uploadedFileName && !isUploading && (
-          <div className="text-xs text-nyt-gray flex items-center">
-            <FileCheck className="h-3 w-3 mr-1 text-nyt-green" />
+        {uploadedFileName && (
+          <p className="text-xs text-nyt-gray">
             Current file: {uploadedFileName}
-          </div>
+          </p>
         )}
       </div>
     </div>
