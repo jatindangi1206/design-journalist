@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -11,8 +10,8 @@ const Index = () => {
   const featuredArticle = {
     id: "1",
     title: "Trump's Naval Academy Appointments Intensify Military Oversight Focus",
-    description: "President Trump appointed loyalists, including former press secretary Sean Spicer and valet Walt Nauta, to the Naval Academy Board, intensifying his focus on military oversight.",
-    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    description: "President Trump appointed loyalists, including former press secretary Sean Spipper and valet Walt Nauta, to the Naval Academy Board, intensifying his focus on military oversight.",
+    imageUrl: "https://images.unsplash.com/photo-1569163139599-0f4259cc6a52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     category: "Politics",
     date: "March 15, 2025",
     author: "Robert Johnson"
@@ -33,7 +32,7 @@ const Index = () => {
       id: "3",
       title: "Government Shutdown Looms as Congress Stalls on Funding",
       description: "Federal agencies prepare contingency plans as funding deadline approaches, risking a shutdown by March 17.",
-      imageUrl: "https://images.unsplash.com/photo-1569163139599-0f4259cc6a52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Politics",
       date: "March 13, 2025",
       author: "Sophia Rodriguez"
@@ -54,7 +53,7 @@ const Index = () => {
     {
       id: "5",
       title: "U.S.-Canada Trade Tensions Escalate As Trump Delays Tariffs",
-      imageUrl: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Politics",
       date: "March 11, 2025",
       author: "Robert Johnson"
@@ -62,7 +61,7 @@ const Index = () => {
     {
       id: "6",
       title: "Marist Poll: 56% Believe Trump Moving Too Quickly on Policies",
-      imageUrl: "https://images.unsplash.com/photo-1575672913784-11a7cd4f25df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
       category: "Politics",
       date: "March 10, 2025",
       author: "Jennifer Adams"
@@ -70,7 +69,7 @@ const Index = () => {
     {
       id: "7",
       title: "Ukraine-Russia Conflict: Kyiv Seeks Ceasefire After Aid Reduction",
-      imageUrl: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1603466182843-844ea7b084d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
       category: "Politics",
       date: "March 9, 2025",
       author: "Michael Thompson"
@@ -78,7 +77,7 @@ const Index = () => {
     {
       id: "8",
       title: "VA Staffing Cuts: Proposed Layoffs Spark Healthcare Access Concerns",
-      imageUrl: "https://images.unsplash.com/photo-1464039397811-476f652a343b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1516549655669-3ff852197e2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Politics",
       date: "March 8, 2025",
       author: "Sarah Collins"
@@ -90,7 +89,7 @@ const Index = () => {
     {
       id: "9",
       title: "EU's AI Transparency Mandate: 'Neural Receipts' Required from March 15",
-      imageUrl: "https://images.unsplash.com/photo-1639065455976-fd3c6547da1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Technology",
       date: "March 7, 2025",
       author: "David Kim"
@@ -98,7 +97,7 @@ const Index = () => {
     {
       id: "10",
       title: "IBM's 10,000-Qubit Processor Achieves Commercial Error Correction",
-      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1501621667575-af81f1f0bacc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Technology",
       date: "March 6, 2025",
       author: "Rachel Foster"
@@ -106,7 +105,7 @@ const Index = () => {
     {
       id: "11",
       title: "YouTube Integrates Veo 2 AI Video Generation Into Dream Screen",
-      imageUrl: "https://images.unsplash.com/photo-1626387346567-68d15fe6c2f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80",
       category: "Technology",
       date: "March 5, 2025",
       author: "Brian Mitchell"
@@ -114,7 +113,7 @@ const Index = () => {
     {
       id: "12",
       title: "Athena Moon Lander Reaches South Pole with Uncertain Status",
-      imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80",
       category: "Technology",
       date: "March 4, 2025",
       author: "Emma Garcia"
@@ -126,7 +125,7 @@ const Index = () => {
     {
       id: "13",
       title: "Kennedy Center Overhaul: Trump Adds Fox News Hosts to Board",
-      imageUrl: "https://images.unsplash.com/photo-1545989253-02cc26577f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
       category: "Arts",
       date: "March 3, 2025",
       author: "Olivia Wright"
@@ -134,7 +133,7 @@ const Index = () => {
     {
       id: "14",
       title: "Glastonbury 2025 Lineup: The 1975, Neil Young, and Olivia Rodrigo",
-      imageUrl: "https://images.unsplash.com/photo-1593566629847-acee33dbdcfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       category: "Arts",
       date: "March 2, 2025",
       author: "Thomas Wilson"
@@ -142,7 +141,7 @@ const Index = () => {
     {
       id: "15",
       title: "Kara Walker's SFMOMA Exhibit Blends Historical and Futuristic Themes",
-      imageUrl: "https://images.unsplash.com/photo-1561046255-d4ef8bd2b4d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1580136579312-94651dfd596d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2127&q=80",
       category: "Arts",
       date: "March 1, 2025",
       author: "Natasha Davis"
@@ -150,7 +149,7 @@ const Index = () => {
     {
       id: "16",
       title: "Kim Kardashian's Outfit Controversy: Bianca Censori-Inspired Look",
-      imageUrl: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2072&q=80",
       category: "Style",
       date: "February 28, 2025",
       author: "James Peterson"
@@ -245,4 +244,3 @@ const Index = () => {
 };
 
 export default Index;
-
