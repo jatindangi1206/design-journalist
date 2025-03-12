@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, Search, User, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentDate] = useState(new Date());
+  const navigate = useNavigate();
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('en-US', {
@@ -28,6 +29,10 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
 
   return (
     <header className="w-full">
@@ -65,7 +70,11 @@ const Navbar = () => {
               <button aria-label="Search" className="p-2 transition-transform duration-300 hover:scale-105">
                 <Search className="h-5 w-5" />
               </button>
-              <button aria-label="Account" className="p-2 transition-transform duration-300 hover:scale-105">
+              <button 
+                onClick={handleLoginClick} 
+                aria-label="Login" 
+                className="p-2 transition-transform duration-300 hover:scale-105"
+              >
                 <User className="h-5 w-5" />
               </button>
             </div>
