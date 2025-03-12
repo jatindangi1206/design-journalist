@@ -100,6 +100,15 @@
   .heading-divider {
     @apply w-full h-px bg-nyt-gray-light my-6;
   }
+
+  /* Article content with typography */
+  .article-typography {
+    @apply prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-bold 
+    prose-p:text-nyt-black prose-p:font-serif prose-p:leading-relaxed
+    prose-a:text-nyt-blue prose-a:no-underline hover:prose-a:text-nyt-red
+    prose-blockquote:border-l-nyt-gray-light prose-blockquote:text-nyt-gray-dark prose-blockquote:italic
+    prose-img:rounded-none prose-img:mx-auto;
+  }
 }
 
 @layer utilities {

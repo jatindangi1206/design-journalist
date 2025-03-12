@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -155,7 +154,44 @@ export default {
 				'article-tablet': 'repeat(3, 1fr)',
 				'article-mobile': '1fr',
 			},
+			typography: {
+				DEFAULT: {
+					css: {
+						color: '#121212',
+						a: {
+							color: '#326891',
+							'&:hover': {
+								color: '#555555',
+							},
+						},
+						h1: {
+							fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
+							fontWeight: '700',
+						},
+						h2: {
+							fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
+							fontWeight: '700',
+						},
+						h3: {
+							fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
+							fontWeight: '600',
+						},
+						h4: {
+							fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
+							fontWeight: '600',
+						},
+						blockquote: {
+							borderLeftColor: '#E2E2E2',
+							fontStyle: 'italic',
+							color: '#333333',
+						},
+					},
+				},
+			},
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("@tailwindcss/typography"),
+	],
 } satisfies Config;
