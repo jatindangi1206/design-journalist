@@ -1,7 +1,20 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Broadway font implementation */
+@font-face {
+  font-family: 'Broadway';
+  src: url('https://db.onlinewebfonts.com/t/ee7f3637e42c12e43e1be4aae9175d6c.eot');
+  src: url('https://db.onlinewebfonts.com/t/ee7f3637e42c12e43e1be4aae9175d6c.eot?#iefix') format('embedded-opentype'),
+       url('https://db.onlinewebfonts.com/t/ee7f3637e42c12e43e1be4aae9175d6c.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/ee7f3637e42c12e43e1be4aae9175d6c.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/ee7f3637e42c12e43e1be4aae9175d6c.ttf') format('truetype'),
+       url('https://db.onlinewebfonts.com/t/ee7f3637e42c12e43e1be4aae9175d6c.svg#Broadway') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {

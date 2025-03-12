@@ -85,7 +85,7 @@ const Navbar = () => {
 
             {/* Center: Logo */}
             <Link to="/" className="absolute left-1/2 transform -translate-x-1/2">
-              <h1 className="font-serif font-bold text-2xl tracking-tight animate-fade-in">The Journal</h1>
+              <h1 className="font-broadway font-bold text-2xl tracking-tight animate-fade-in">The Thought</h1>
             </Link>
 
             {/* Right: Icons */}
@@ -141,7 +141,7 @@ const Navbar = () => {
       >
         <div className="container-fluid py-6">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="font-serif font-bold text-xl">Menu</h2>
+            <h2 className="font-broadway font-bold text-xl">Menu</h2>
             <button 
               onClick={toggleMenu}
               aria-label="Close menu"

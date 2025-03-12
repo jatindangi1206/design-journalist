@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -89,6 +90,7 @@ export default {
 			fontFamily: {
 				serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
 				sans: ['Helvetica', 'Arial', 'sans-serif'],
+				broadway: ['Broadway', 'Impact', 'Haettenschweiler', 'sans-serif'],
 			},
 			fontSize: {
 				'featured': ['50px', {
