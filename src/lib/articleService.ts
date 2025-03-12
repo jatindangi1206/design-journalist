@@ -1,4 +1,3 @@
-
 export interface ArticleMetadata {
   id: string;
   title: string;
@@ -39,7 +38,8 @@ export const saveArticle = (article: Omit<Article, 'id'> & { id?: string }): Art
   const articles = getArticles();
   const newArticle = {
     ...article,
-    id: article.id || generateId()
+    id: article.id || generateId(),
+    category: article.category.trim() || 'Uncategorized'
   };
   
   const existingIndex = articles.findIndex(a => a.id === newArticle.id);
@@ -71,6 +71,13 @@ export const getPublishedArticles = (): Article[] => {
   return getArticles().filter(article => !article.isDraft);
 };
 
+// Get articles by category (case insensitive)
+export const getArticlesByCategory = (category: string): Article[] => {
+  return getPublishedArticles().filter(
+    article => article.category.toLowerCase() === category.toLowerCase()
+  );
+};
+
 // Publish a draft
 export const publishArticle = (id: string): Article | undefined => {
   const article = getArticleById(id);
@@ -80,6 +87,13 @@ export const publishArticle = (id: string): Article | undefined => {
     return updatedArticle;
   }
   return article;
+};
+
+// Get all available categories from published articles
+export const getCategories = (): string[] => {
+  const articles = getPublishedArticles();
+  const categories = new Set(articles.map(article => article.category));
+  return Array.from(categories);
 };
 
 // Extract text content from uploaded files
@@ -169,4 +183,3 @@ export const extractContentFromFile = async (file: File): Promise<{
     reader.readAsText(file);
   });
 };
-
