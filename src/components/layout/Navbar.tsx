@@ -1,14 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, Search, User, X } from 'lucide-react';
+import { Menu, Search, User, X, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentDate] = useState(new Date());
   const navigate = useNavigate();
+  const { isLoggedIn, user, logout } = useAuth();
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString('en-US', {
@@ -34,13 +36,34 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const handleJournalClick = () => {
+    navigate('/journal');
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <header className="w-full">
       {/* Top date and subscription bar */}
       <div className="w-full bg-white border-b border-nyt-gray-light">
         <div className="container-fluid py-2 flex justify-between items-center">
           <p className="text-caption font-sans text-nyt-gray">{formatDate(currentDate)}</p>
-          <Link to="/subscribe" className="text-caption font-sans text-nyt-blue animated-link">Subscribe Now</Link>
+          {isLoggedIn ? (
+            <div className="flex items-center space-x-4">
+              <span className="text-caption font-sans">Welcome, {user?.name}</span>
+              <button 
+                onClick={handleLogoutClick}
+                className="text-caption font-sans text-nyt-red animated-link"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to="/subscribe" className="text-caption font-sans text-nyt-blue animated-link">Subscribe Now</Link>
+          )}
         </div>
       </div>
 
@@ -70,13 +93,25 @@ const Navbar = () => {
               <button aria-label="Search" className="p-2 transition-transform duration-300 hover:scale-105">
                 <Search className="h-5 w-5" />
               </button>
-              <button 
-                onClick={handleLoginClick} 
-                aria-label="Login" 
-                className="p-2 transition-transform duration-300 hover:scale-105"
-              >
-                <User className="h-5 w-5" />
-              </button>
+              
+              {isLoggedIn ? (
+                <button 
+                  onClick={handleJournalClick}
+                  aria-label="My Journal" 
+                  className="p-2 transition-transform duration-300 hover:scale-105"
+                  title="My Journal"
+                >
+                  <BookOpen className="h-5 w-5" />
+                </button>
+              ) : (
+                <button 
+                  onClick={handleLoginClick} 
+                  aria-label="Login" 
+                  className="p-2 transition-transform duration-300 hover:scale-105"
+                >
+                  <User className="h-5 w-5" />
+                </button>
+              )}
             </div>
           </div>
 
@@ -90,6 +125,9 @@ const Navbar = () => {
             <Link to="/section/arts" className="nav-link">Arts</Link>
             <Link to="/section/style" className="nav-link">Style</Link>
             <Link to="/section/travel" className="nav-link">Travel</Link>
+            {isLoggedIn && (
+              <Link to="/journal" className="nav-link text-nyt-red">My Journal</Link>
+            )}
           </div>
         </div>
       </nav>
@@ -122,6 +160,25 @@ const Navbar = () => {
             <Link to="/section/arts" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Arts</Link>
             <Link to="/section/style" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Style</Link>
             <Link to="/section/travel" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Travel</Link>
+            
+            {isLoggedIn && (
+              <Link to="/journal" className="text-headline font-serif text-nyt-red hover:text-nyt-blue transition-colors" onClick={toggleMenu}>My Journal</Link>
+            )}
+            
+            {isLoggedIn ? (
+              <button 
+                onClick={() => {
+                  logout();
+                  toggleMenu();
+                  navigate('/');
+                }} 
+                className="text-headline font-serif text-nyt-red hover:text-nyt-blue transition-colors text-left"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link to="/login" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Login</Link>
+            )}
           </div>
         </div>
       </div>
