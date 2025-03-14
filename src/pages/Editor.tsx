@@ -10,12 +10,14 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Article, ArticleMetadata, getArticleById, saveArticle, publishArticle } from '@/lib/articleService';
 import { toast } from 'sonner';
-import { Save, Send, Eye, ArrowLeft, Upload } from 'lucide-react';
+import { Save, Send, Eye, ArrowLeft, Upload, Loader2 } from 'lucide-react';
 
 const Editor = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('content');
+  const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(false);
   
   const [article, setArticle] = useState<Article>({
     id: '',
@@ -32,15 +34,28 @@ const Editor = () => {
   const [showUploader, setShowUploader] = useState(false);
   
   useEffect(() => {
-    if (id) {
-      const existingArticle = getArticleById(id);
-      if (existingArticle) {
-        setArticle(existingArticle);
-      } else {
-        toast.error('Article not found');
-        navigate('/dashboard');
+    const fetchArticle = async () => {
+      if (id) {
+        setInitialLoading(true);
+        try {
+          const existingArticle = await getArticleById(id);
+          if (existingArticle) {
+            setArticle(existingArticle);
+          } else {
+            toast.error('Article not found');
+            navigate('/dashboard');
+          }
+        } catch (error) {
+          console.error('Error fetching article:', error);
+          toast.error('Failed to load article');
+          navigate('/dashboard');
+        } finally {
+          setInitialLoading(false);
+        }
       }
-    }
+    };
+    
+    fetchArticle();
   }, [id, navigate]);
   
   const handleMetadataChange = (field: keyof ArticleMetadata, value: any) => {
@@ -55,35 +70,44 @@ const Editor = () => {
     setArticle(prev => ({ ...prev, pullQuote }));
   };
   
-  const handleSaveDraft = () => {
+  const handleSaveDraft = async () => {
+    setLoading(true);
     try {
-      saveArticle({ ...article, isDraft: true });
+      const savedArticle = await saveArticle({ ...article, isDraft: true });
       toast.success('Draft saved successfully');
+      
+      // Update the article with the saved version (including id if it was new)
+      setArticle(savedArticle);
       
       if (!id) {
         // Redirect to the editor with the new ID if this is a new article
-        navigate(`/editor/${article.id}`);
+        navigate(`/editor/${savedArticle.id}`);
       }
     } catch (error) {
       toast.error('Failed to save draft');
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
   
-  const handlePublish = () => {
+  const handlePublish = async () => {
     // Validate required fields
     if (!article.title || !article.category || !article.author || article.content.some(p => !p.trim())) {
       toast.error('Please fill in all required fields');
       return;
     }
     
+    setLoading(true);
     try {
-      const published = saveArticle({ ...article, isDraft: false });
+      const published = await saveArticle({ ...article, isDraft: false });
       toast.success('Article published successfully');
       navigate(`/article/${published.id}`);
     } catch (error) {
       toast.error('Failed to publish article');
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -113,6 +137,18 @@ const Editor = () => {
     setActiveTab('content');
     toast.success('Document content imported. You can now edit and refine it.');
   };
+  
+  if (initialLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-nyt-red" />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -163,8 +199,13 @@ const Editor = () => {
                 size="sm"
                 onClick={handleSaveDraft}
                 className="flex items-center"
+                disabled={loading}
               >
-                <Save className="h-4 w-4 mr-2" />
+                {loading ? (
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Save className="h-4 w-4 mr-2" />
+                )}
                 Save Draft
               </Button>
               
@@ -173,8 +214,13 @@ const Editor = () => {
                 size="sm"
                 onClick={handlePublish}
                 className="flex items-center bg-nyt-red hover:bg-nyt-red/90"
+                disabled={loading}
               >
-                <Send className="h-4 w-4 mr-2" />
+                {loading ? (
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Send className="h-4 w-4 mr-2" />
+                )}
                 Publish
               </Button>
             </div>

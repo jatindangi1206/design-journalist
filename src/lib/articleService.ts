@@ -1,3 +1,6 @@
+
+import { supabase } from './supabase';
+
 export interface ArticleMetadata {
   id: string;
   title: string;
@@ -22,78 +25,189 @@ const generateId = () => {
 };
 
 // Get all articles
-export const getArticles = (): Article[] => {
-  const articles = localStorage.getItem('articles');
-  return articles ? JSON.parse(articles) : [];
+export const getArticles = async (): Promise<Article[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*');
+    
+    if (error) {
+      console.error('Error fetching articles:', error);
+      return [];
+    }
+    
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    return [];
+  }
 };
 
 // Get a single article by ID
-export const getArticleById = (id: string): Article | undefined => {
-  const articles = getArticles();
-  return articles.find(article => article.id === id);
+export const getArticleById = async (id: string): Promise<Article | undefined> => {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('id', id)
+      .single();
+    
+    if (error) {
+      console.error('Error fetching article:', error);
+      return undefined;
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Error fetching article:', error);
+    return undefined;
+  }
 };
 
 // Save a new article or update an existing one
-export const saveArticle = (article: Omit<Article, 'id'> & { id?: string }): Article => {
-  const articles = getArticles();
+export const saveArticle = async (article: Omit<Article, 'id'> & { id?: string }): Promise<Article> => {
   const newArticle = {
     ...article,
     id: article.id || generateId(),
     category: article.category.trim() || 'Uncategorized'
   };
   
-  const existingIndex = articles.findIndex(a => a.id === newArticle.id);
-  
-  if (existingIndex >= 0) {
-    articles[existingIndex] = newArticle;
-  } else {
-    articles.push(newArticle);
+  try {
+    if (article.id) {
+      // Update
+      const { error } = await supabase
+        .from('articles')
+        .update(newArticle)
+        .eq('id', article.id);
+      
+      if (error) {
+        console.error('Error updating article:', error);
+        throw error;
+      }
+    } else {
+      // Insert
+      const { error } = await supabase
+        .from('articles')
+        .insert(newArticle);
+      
+      if (error) {
+        console.error('Error inserting article:', error);
+        throw error;
+      }
+    }
+    
+    return newArticle;
+  } catch (error) {
+    console.error('Error saving article:', error);
+    throw error;
   }
-  
-  localStorage.setItem('articles', JSON.stringify(articles));
-  return newArticle;
 };
 
 // Delete an article
-export const deleteArticle = (id: string): void => {
-  const articles = getArticles();
-  const filteredArticles = articles.filter(article => article.id !== id);
-  localStorage.setItem('articles', JSON.stringify(filteredArticles));
+export const deleteArticle = async (id: string): Promise<void> => {
+  try {
+    const { error } = await supabase
+      .from('articles')
+      .delete()
+      .eq('id', id);
+    
+    if (error) {
+      console.error('Error deleting article:', error);
+      throw error;
+    }
+  } catch (error) {
+    console.error('Error deleting article:', error);
+    throw error;
+  }
 };
 
 // Get all drafts
-export const getDrafts = (): Article[] => {
-  return getArticles().filter(article => article.isDraft);
+export const getDrafts = async (): Promise<Article[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('isDraft', true);
+    
+    if (error) {
+      console.error('Error fetching drafts:', error);
+      return [];
+    }
+    
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching drafts:', error);
+    return [];
+  }
 };
 
 // Get all published articles
-export const getPublishedArticles = (): Article[] => {
-  return getArticles().filter(article => !article.isDraft);
+export const getPublishedArticles = async (): Promise<Article[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('isDraft', false);
+    
+    if (error) {
+      console.error('Error fetching published articles:', error);
+      return [];
+    }
+    
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching published articles:', error);
+    return [];
+  }
 };
 
 // Get articles by category (case insensitive)
-export const getArticlesByCategory = (category: string): Article[] => {
-  return getPublishedArticles().filter(
-    article => article.category.toLowerCase() === category.toLowerCase()
-  );
+export const getArticlesByCategory = async (category: string): Promise<Article[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('isDraft', false)
+      .ilike('category', category);
+    
+    if (error) {
+      console.error('Error fetching articles by category:', error);
+      return [];
+    }
+    
+    return data || [];
+  } catch (error) {
+    console.error('Error fetching articles by category:', error);
+    return [];
+  }
 };
 
 // Publish a draft
-export const publishArticle = (id: string): Article | undefined => {
-  const article = getArticleById(id);
-  if (article && article.isDraft) {
-    const updatedArticle = { ...article, isDraft: false };
-    saveArticle(updatedArticle);
-    return updatedArticle;
+export const publishArticle = async (id: string): Promise<Article | undefined> => {
+  try {
+    const article = await getArticleById(id);
+    if (article && article.isDraft) {
+      const updatedArticle = { ...article, isDraft: false };
+      await saveArticle(updatedArticle);
+      return updatedArticle;
+    }
+    return article;
+  } catch (error) {
+    console.error('Error publishing article:', error);
+    throw error;
   }
-  return article;
 };
 
 // Get all available categories from published articles
-export const getCategories = (): string[] => {
-  const articles = getPublishedArticles();
-  const categories = new Set(articles.map(article => article.category));
-  return Array.from(categories);
+export const getCategories = async (): Promise<string[]> => {
+  try {
+    const articles = await getPublishedArticles();
+    const categories = new Set(articles.map(article => article.category));
+    return Array.from(categories);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
 };
 
 // Extract text content from uploaded files

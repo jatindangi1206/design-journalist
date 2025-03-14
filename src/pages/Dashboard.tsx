@@ -23,7 +23,8 @@ import {
   Calendar, 
   Tag, 
   FileText, 
-  Eye 
+  Eye,
+  Loader2
 } from 'lucide-react';
 import {
   Table,
@@ -50,25 +51,27 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [articleToDelete, setArticleToDelete] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     loadArticles();
   }, [activeTab]);
   
-  const loadArticles = () => {
+  const loadArticles = async () => {
     try {
+      setLoading(true);
       let loadedArticles: Article[];
       
       switch (activeTab) {
         case 'drafts':
-          loadedArticles = getDrafts();
+          loadedArticles = await getDrafts();
           break;
         case 'published':
-          loadedArticles = getPublishedArticles();
+          loadedArticles = await getPublishedArticles();
           break;
         case 'all':
         default:
-          loadedArticles = getArticles();
+          loadedArticles = await getArticles();
           break;
       }
       
@@ -78,6 +81,8 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Error loading articles:', error);
       toast.error('Failed to load articles');
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -94,11 +99,11 @@ const Dashboard = () => {
     setDeleteDialogOpen(true);
   };
   
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (articleToDelete) {
       try {
-        deleteArticle(articleToDelete);
-        loadArticles();
+        await deleteArticle(articleToDelete);
+        await loadArticles();
         toast.success('Article deleted successfully');
       } catch (error) {
         console.error('Error deleting article:', error);
@@ -109,11 +114,11 @@ const Dashboard = () => {
     }
   };
   
-  const handlePublish = (id: string) => {
+  const handlePublish = async (id: string) => {
     try {
-      const published = publishArticle(id);
+      const published = await publishArticle(id);
       if (published) {
-        loadArticles();
+        await loadArticles();
         toast.success('Article published successfully');
       }
     } catch (error) {
@@ -165,6 +170,7 @@ const Dashboard = () => {
                 onEdit={handleEdit}
                 onDelete={handleDelete}
                 onPublish={handlePublish}
+                loading={loading}
               />
             </TabsContent>
             
@@ -174,6 +180,7 @@ const Dashboard = () => {
                 onEdit={handleEdit}
                 onDelete={handleDelete}
                 onPublish={handlePublish}
+                loading={loading}
               />
             </TabsContent>
             
@@ -183,6 +190,7 @@ const Dashboard = () => {
                 onEdit={handleEdit}
                 onDelete={handleDelete}
                 onPublish={handlePublish}
+                loading={loading}
               />
             </TabsContent>
           </Tabs>
@@ -216,10 +224,19 @@ interface ArticleTableProps {
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   onPublish: (id: string) => void;
+  loading: boolean;
 }
 
-const ArticleTable = ({ articles, onEdit, onDelete, onPublish }: ArticleTableProps) => {
+const ArticleTable = ({ articles, onEdit, onDelete, onPublish, loading }: ArticleTableProps) => {
   const navigate = useNavigate();
+  
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <Loader2 className="w-8 h-8 animate-spin text-nyt-red" />
+      </div>
+    );
+  }
   
   if (articles.length === 0) {
     return (

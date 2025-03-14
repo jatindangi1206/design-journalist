@@ -5,7 +5,8 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import ArticleCard from '../components/ui/ArticleCard';
 import SectionDivider from '../components/ui/SectionDivider';
-import { getPublishedArticles, Article } from '../lib/articleService';
+import { getPublishedArticles, getArticlesByCategory, Article } from '../lib/articleService';
+import { Loader2 } from 'lucide-react';
 
 const Section = () => {
   const { category } = useParams<{ category: string }>();
@@ -13,16 +14,26 @@ const Section = () => {
   const [loading, setLoading] = useState<boolean>(true);
   
   useEffect(() => {
-    // Get all published articles
-    const publishedArticles = getPublishedArticles();
+    const fetchArticles = async () => {
+      setLoading(true);
+      try {
+        let fetchedArticles: Article[];
+        
+        if (category) {
+          fetchedArticles = await getArticlesByCategory(category);
+        } else {
+          fetchedArticles = await getPublishedArticles();
+        }
+        
+        setArticles(fetchedArticles);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
     
-    // Filter articles by category (case insensitive)
-    const filteredArticles = publishedArticles.filter(article => 
-      article.category.toLowerCase() === category?.toLowerCase()
-    );
-    
-    setArticles(filteredArticles);
-    setLoading(false);
+    fetchArticles();
   }, [category]);
   
   const formattedCategory = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
@@ -35,8 +46,8 @@ const Section = () => {
         <SectionDivider title={formattedCategory} className="mb-8" />
         
         {loading ? (
-          <div className="py-16 text-center">
-            <p className="text-nyt-gray-dark">Loading articles...</p>
+          <div className="py-16 flex justify-center">
+            <Loader2 className="w-8 h-8 animate-spin text-nyt-red" />
           </div>
         ) : articles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
