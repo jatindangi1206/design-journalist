@@ -36,7 +36,13 @@ export const getArticles = async (): Promise<Article[]> => {
       return [];
     }
     
-    return data || [];
+    // Transform data if needed (e.g., map isdraft to isDraft)
+    const articles = data?.map(article => ({
+      ...article,
+      isDraft: article.isdraft !== undefined ? article.isdraft : article.isDraft
+    })) || [];
+    
+    return articles;
   } catch (error) {
     console.error('Error fetching articles:', error);
     return [];
@@ -57,7 +63,13 @@ export const getArticleById = async (id: string): Promise<Article | undefined> =
       return undefined;
     }
     
-    return data;
+    // Transform data if needed
+    const article = data ? {
+      ...data,
+      isDraft: data.isdraft !== undefined ? data.isdraft : data.isDraft
+    } : undefined;
+    
+    return article;
   } catch (error) {
     console.error('Error fetching article:', error);
     return undefined;
@@ -69,8 +81,13 @@ export const saveArticle = async (article: Omit<Article, 'id'> & { id?: string }
   const newArticle = {
     ...article,
     id: article.id || generateId(),
-    category: article.category.trim() || 'Uncategorized'
+    category: article.category.trim() || 'Uncategorized',
+    // Convert isDraft to isdraft for Supabase
+    isdraft: article.isDraft,
   };
+  
+  // Remove isDraft as we're using isdraft for the database
+  delete (newArticle as any).isDraft;
   
   try {
     if (article.id) {
@@ -96,7 +113,11 @@ export const saveArticle = async (article: Omit<Article, 'id'> & { id?: string }
       }
     }
     
-    return newArticle;
+    // Return article with isDraft for frontend compatibility
+    return {
+      ...newArticle,
+      isDraft: newArticle.isdraft
+    } as Article;
   } catch (error) {
     console.error('Error saving article:', error);
     throw error;
@@ -127,14 +148,20 @@ export const getDrafts = async (): Promise<Article[]> => {
     const { data, error } = await supabase
       .from('articles')
       .select('*')
-      .eq('isDraft', true);
+      .eq('isdraft', true);
     
     if (error) {
       console.error('Error fetching drafts:', error);
       return [];
     }
     
-    return data || [];
+    // Transform data for frontend compatibility
+    const drafts = data?.map(article => ({
+      ...article,
+      isDraft: article.isdraft
+    })) || [];
+    
+    return drafts;
   } catch (error) {
     console.error('Error fetching drafts:', error);
     return [];
@@ -147,14 +174,20 @@ export const getPublishedArticles = async (): Promise<Article[]> => {
     const { data, error } = await supabase
       .from('articles')
       .select('*')
-      .eq('isDraft', false);
+      .eq('isdraft', false);
     
     if (error) {
       console.error('Error fetching published articles:', error);
       return [];
     }
     
-    return data || [];
+    // Transform data for frontend compatibility
+    const published = data?.map(article => ({
+      ...article,
+      isDraft: article.isdraft
+    })) || [];
+    
+    return published;
   } catch (error) {
     console.error('Error fetching published articles:', error);
     return [];
@@ -167,7 +200,7 @@ export const getArticlesByCategory = async (category: string): Promise<Article[]
     const { data, error } = await supabase
       .from('articles')
       .select('*')
-      .eq('isDraft', false)
+      .eq('isdraft', false)
       .ilike('category', category);
     
     if (error) {
@@ -175,7 +208,13 @@ export const getArticlesByCategory = async (category: string): Promise<Article[]
       return [];
     }
     
-    return data || [];
+    // Transform data for frontend compatibility
+    const articles = data?.map(article => ({
+      ...article,
+      isDraft: article.isdraft
+    })) || [];
+    
+    return articles;
   } catch (error) {
     console.error('Error fetching articles by category:', error);
     return [];
@@ -187,7 +226,10 @@ export const publishArticle = async (id: string): Promise<Article | undefined> =
   try {
     const article = await getArticleById(id);
     if (article && article.isDraft) {
-      const updatedArticle = { ...article, isDraft: false };
+      const updatedArticle = { 
+        ...article, 
+        isDraft: false 
+      };
       await saveArticle(updatedArticle);
       return updatedArticle;
     }
