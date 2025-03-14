@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, Search, User, X, BookOpen } from 'lucide-react';
+import { Menu, Search, User, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -34,10 +34,6 @@ const Navbar = () => {
   
   const handleLoginClick = () => {
     navigate('/login');
-  };
-
-  const handleJournalClick = () => {
-    navigate('/journal');
   };
 
   const handleLogoutClick = () => {
@@ -94,20 +90,22 @@ const Navbar = () => {
                 <Search className="h-5 w-5" />
               </button>
               
-              {isLoggedIn ? (
-                <button 
-                  onClick={handleJournalClick}
-                  aria-label="My Journal" 
-                  className="p-2 transition-transform duration-300 hover:scale-105"
-                  title="My Journal"
-                >
-                  <BookOpen className="h-5 w-5" />
-                </button>
-              ) : (
+              {!isLoggedIn && (
                 <button 
                   onClick={handleLoginClick} 
                   aria-label="Login" 
                   className="p-2 transition-transform duration-300 hover:scale-105"
+                >
+                  <User className="h-5 w-5" />
+                </button>
+              )}
+              
+              {isLoggedIn && (
+                <button 
+                  onClick={() => navigate('/dashboard')}
+                  aria-label="Dashboard" 
+                  className="p-2 transition-transform duration-300 hover:scale-105"
+                  title="Dashboard"
                 >
                   <User className="h-5 w-5" />
                 </button>
@@ -126,7 +124,7 @@ const Navbar = () => {
             <Link to="/section/style" className="nav-link">Style</Link>
             <Link to="/section/travel" className="nav-link">Travel</Link>
             {isLoggedIn && (
-              <Link to="/journal" className="nav-link text-nyt-red">My Journal</Link>
+              <Link to="/dashboard" className="nav-link text-nyt-red">Dashboard</Link>
             )}
           </div>
         </div>
@@ -162,7 +160,7 @@ const Navbar = () => {
             <Link to="/section/travel" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Travel</Link>
             
             {isLoggedIn && (
-              <Link to="/journal" className="text-headline font-serif text-nyt-red hover:text-nyt-blue transition-colors" onClick={toggleMenu}>My Journal</Link>
+              <Link to="/dashboard" className="text-headline font-serif text-nyt-red hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Dashboard</Link>
             )}
             
             {isLoggedIn ? (

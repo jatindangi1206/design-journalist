@@ -10,9 +10,6 @@ import NotFound from "./pages/NotFound";
 import Editor from "./pages/Editor";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Journal from "./pages/Journal";
-import JournalEntry from "./pages/JournalEntry";
-import JournalForm from "./pages/JournalForm";
 import Section from "./pages/Section";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/auth/PrivateRoute";
@@ -34,28 +31,6 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/section/:category" element={<Section />} />
-            
-            {/* Journal Routes */}
-            <Route path="/journal" element={
-              <PrivateRoute>
-                <Journal />
-              </PrivateRoute>
-            } />
-            <Route path="/journal/new" element={
-              <PrivateRoute>
-                <JournalForm />
-              </PrivateRoute>
-            } />
-            <Route path="/journal/edit/:id" element={
-              <PrivateRoute>
-                <JournalForm />
-              </PrivateRoute>
-            } />
-            <Route path="/journal/:id" element={
-              <PrivateRoute>
-                <JournalEntry />
-              </PrivateRoute>
-            } />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
