@@ -25,15 +25,17 @@ export const SectionHero = ({
       )}
     >
       <div 
-        className="absolute inset-0 bg-cover bg-center z-0"
+        className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-700 ease-out"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       <div className="relative z-10 max-w-4xl px-6 animate-fade-in">
-        <h1 className="font-broadway text-4xl md:text-6xl text-white mb-4">{title}</h1>
-        <p className="font-serif text-xl text-white/90 italic max-w-xl mx-auto">{subtitle}</p>
-        {children}
+        <h1 className="font-broadway text-4xl md:text-6xl text-white mb-4 animate-slide-in">{title}</h1>
+        <p className="font-serif text-xl text-white/90 italic max-w-xl mx-auto animate-fade-in">{subtitle}</p>
+        <div className="mt-4 animate-fade-in transition-all duration-700 delay-300">
+          {children}
+        </div>
       </div>
     </section>
   );
@@ -47,7 +49,7 @@ interface SectionIntroProps {
 export const SectionIntro = ({ children, className }: SectionIntroProps) => {
   return (
     <div className={cn("container-fluid py-12 max-w-3xl mx-auto text-center", className)}>
-      <div className="prose prose-lg mx-auto">
+      <div className="prose prose-lg mx-auto animate-fade-in">
         {children}
       </div>
     </div>
@@ -109,7 +111,7 @@ export const ProjectCard = ({
 
   return (
     <CardWrapper>
-      <div className="bg-white border border-nyt-gray-light rounded-md overflow-hidden shadow-sm transition-shadow duration-300 hover:shadow-md">
+      <div className="bg-white border border-nyt-gray-light rounded-md overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md">
         <div className="relative aspect-[16/9] overflow-hidden">
           <img 
             src={imageUrl} 
