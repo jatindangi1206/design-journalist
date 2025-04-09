@@ -13,20 +13,21 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
           {/* About Me Section */}
           <div>
-            <h3 className="font-serif font-bold text-xl mb-6">Jatin Dangi</h3>
+            <h3 className="font-serif font-bold text-xl mb-6">Prince of Mahmudabad</h3>
             <div className="space-y-4 text-nyt-gray-dark dark:text-nyt-gray-light">
               <p className="text-sm leading-relaxed">
-                I'm a Computer Science & Biology major, passionate about the intersection of digital health 
-                and modern biological complex systems. When I'm not coding or in the lab, you'll find me 
-                on the football field or designing websites.
+                As the Prince of Mahmudabad, I am dedicated to preserving our rich cultural heritage 
+                while embracing the opportunities of the modern age. My family's history stretches back 
+                centuries, with a legacy of art, architecture, and statesmanship.
               </p>
               <p className="text-sm leading-relaxed">
-                I specialize in software engineering, system design, and optimizing large-scale SaaS platforms. 
-                Currently, I'm planning a solo trip to Japan—a journey I've been anticipating for a while.
+                Today, I focus on documenting our royal history, creating educational films, and 
+                engaging in philanthropic work that honors our past while building toward a brighter future. 
+                My career spans traditional royal duties and contemporary endeavors.
               </p>
               <p className="text-sm leading-relaxed">
-                Those who know me would say I'm funny and outgoing, yet I deeply appreciate solitude. 
-                I embrace emptiness and have never feared boredom—it's often where my best ideas come to life.
+                Through this platform, I share glimpses into our heritage, my personal journey, and the 
+                ongoing work to preserve the cultural significance of Mahmudabad for generations to come.
               </p>
             </div>
             
@@ -35,7 +36,7 @@ const Footer = () => {
               {signature && (
                 <img 
                   src={signature} 
-                  alt="Jatin Dangi's signature" 
+                  alt="Prince of Mahmudabad's signature" 
                   className="h-12 opacity-80 dark:opacity-60"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
@@ -52,7 +53,7 @@ const Footer = () => {
               <h3 className="font-serif font-bold text-lg mb-4">Connect</h3>
               <div className="flex space-x-5">
                 <a 
-                  href="https://instagram.com/jatindangi07" 
+                  href="https://instagram.com/princemahmudabad" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-nyt-gray-dark hover:text-nyt-blue transition-colors duration-300 dark:text-nyt-gray-light"
@@ -61,7 +62,7 @@ const Footer = () => {
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a 
-                  href="https://github.com/jatindangi1206" 
+                  href="https://github.com/princemahmudabad" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-nyt-gray-dark hover:text-nyt-blue transition-colors duration-300 dark:text-nyt-gray-light"
@@ -70,7 +71,7 @@ const Footer = () => {
                   <Github className="h-5 w-5" />
                 </a>
                 <a 
-                  href="https://linkedin.com/in/jatin-dangi" 
+                  href="https://linkedin.com/in/princemahmudabad" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-nyt-gray-dark hover:text-nyt-blue transition-colors duration-300 dark:text-nyt-gray-light"
@@ -83,21 +84,21 @@ const Footer = () => {
             
             {/* Features */}
             <div>
-              <h3 className="font-serif font-bold text-lg mb-4">Features</h3>
+              <h3 className="font-serif font-bold text-lg mb-4">Explore</h3>
               <ul className="space-y-3">
-                <li><Link to="/section/technology" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Tech Articles</Link></li>
-                <li><Link to="/section/science" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Biology Research</Link></li>
-                <li><Link to="/dashboard" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Dashboard</Link></li>
+                <li><Link to="/section/heritage" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Royal Heritage</Link></li>
+                <li><Link to="/section/documentaries" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Documentary Films</Link></li>
+                <li><Link to="/section/gallery" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Photo Gallery</Link></li>
               </ul>
             </div>
             
             {/* News */}
             <div>
-              <h3 className="font-serif font-bold text-lg mb-4">News</h3>
+              <h3 className="font-serif font-bold text-lg mb-4">Recent Updates</h3>
               <ul className="space-y-3">
-                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Planning solo trip to Japan</li>
-                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Working on SaaS optimization</li>
-                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Latest football tournament: Semi-finalist</li>
+                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Heritage preservation initiatives</li>
+                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Upcoming documentary premiere</li>
+                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Annual cultural foundation event</li>
               </ul>
             </div>
           </div>
@@ -107,16 +108,17 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center pt-6">
           <div className="mb-4 md:mb-0">
-            <h2 className="font-broadway font-bold text-xl">The Thought</h2>
+            <h2 className="font-broadway font-bold text-xl">Mahmudabad Royal Heritage</h2>
           </div>
           
           <div className="text-center md:text-right">
             <p className="text-xs font-sans text-nyt-gray-dark mb-2 dark:text-nyt-gray-light">
-              © {currentYear} Jatin Dangi. All Rights Reserved.
+              © {currentYear} Office of the Prince of Mahmudabad. All Rights Reserved.
             </p>
             <div className="flex space-x-4 justify-center md:justify-end">
               <Link to="/privacy" className="text-xs font-sans text-nyt-gray-dark hover:text-nyt-blue animated-link dark:text-nyt-gray-light">Privacy</Link>
               <Link to="/terms" className="text-xs font-sans text-nyt-gray-dark hover:text-nyt-blue animated-link dark:text-nyt-gray-light">Terms</Link>
+              <Link to="/contact" className="text-xs font-sans text-nyt-gray-dark hover:text-nyt-blue animated-link dark:text-nyt-gray-light">Contact</Link>
             </div>
           </div>
         </div>

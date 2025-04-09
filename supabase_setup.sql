@@ -51,36 +51,35 @@ CREATE POLICY "Allow authenticated users to delete articles" ON articles
 INSERT INTO articles (id, title, subheading, category, author, date, imageUrl, isdraft, content)
 VALUES
   (
-    'sample-article-1',
-    'Getting Started with React',
-    'A comprehensive guide for beginners',
-    'Technology',
-    'Jatin',
+    'royal-heritage-history',
+    'The Royal Legacy of Mahmudabad',
+    'A journey through centuries of cultural heritage',
+    'Heritage',
+    'Prince of Mahmudabad',
     '2023-06-15',
-    'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     false,
-    ARRAY['React is a popular JavaScript library for building user interfaces.', 'In this article, we will explore the basics of React and how to create your first React application.', 'We will cover components, props, state, and more.']
+    ARRAY['The Mahmudabad estate represents one of the most significant cultural and architectural treasures in our region.', 'With a history stretching back several centuries, our family has been entrusted with preserving this legacy for generations to come.', 'This article explores the architectural wonders, artistic traditions, and royal customs that define our heritage.']
   ),
   (
-    'sample-article-2',
-    'Understanding TypeScript',
-    'Why TypeScript is essential for modern web development',
-    'Programming',
-    'Jatin',
+    'documentary-royal-kitchens',
+    'The Royal Kitchens: A Culinary Journey',
+    'Documenting ancient recipes and cooking traditions',
+    'Documentaries',
+    'Prince of Mahmudabad',
     '2023-07-20',
-    'https://images.unsplash.com/photo-1580894742597-87bc8789db3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1493962853295-0fd70327578a?q=80&w=6000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     false,
-    ARRAY['TypeScript adds static typing to JavaScript, making it easier to catch errors during development.', 'This article explains the benefits of TypeScript and how to integrate it into your projects.', 'We will discuss interfaces, types, generics, and best practices.']
+    ARRAY['Our latest documentary explores the hidden world of the royal kitchens of Mahmudabad.', 'For centuries, these kitchens have produced culinary masterpieces that blend Persian, Mughal, and local influences.', 'This film documents the efforts to preserve these recipes and cooking techniques for future generations.']
   ),
   (
-    'draft-article-1',
-    'Working with Supabase',
-    'Building applications with Supabase and React',
-    'Database',
-    'Jatin',
+    'philanthropy-education-initiative',
+    'Royal Education Initiative',
+    'Building schools and supporting educational access across the region',
+    'Philanthropy',
+    'Prince of Mahmudabad',
     '2023-08-10',
-    'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=2021&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    true,
-    ARRAY['Supabase is an open-source Firebase alternative.', 'This article shows how to integrate Supabase with React applications.', 'We will cover authentication, database operations, and real-time subscriptions.']
+    'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?q=80&w=4221&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    false,
+    ARRAY['Education has always been a cornerstone of our philanthropic efforts.', 'The Mahmudabad Education Initiative aims to provide quality education to children across our region, regardless of their background.', 'This article highlights our ongoing projects, partnerships with educational institutions, and future plans to expand our impact.']
   );
-
