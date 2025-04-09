@@ -16,17 +16,19 @@ const Footer = () => {
             <h3 className="font-serif font-bold text-xl mb-6">Jatin Dangi</h3>
             <div className="space-y-4 text-nyt-gray-dark dark:text-nyt-gray-light">
               <p className="text-sm leading-relaxed">
-                I'm a Computer Science & Biology major, passionate about the intersection of digital health 
-                and modern biological complex systems. When I'm not coding or in the lab, you'll find me 
-                on the football field or designing websites.
+                I'm a Computer Science & Biology major, passionate about the intersection of digital design, 
+                photography, video editing, and modern biological complex systems. When I'm not coding or in the lab, you'll find me 
+                behind a camera or designing new digital experiences.
               </p>
               <p className="text-sm leading-relaxed">
-                I specialize in software engineering, system design, and optimizing large-scale SaaS platforms. 
-                Currently, I'm planning a solo trip to Japan—a journey I've been anticipating for a while.
+                I specialize in software engineering, system design, and creative digital media. 
+                My work bridges technical expertise with creative expression, allowing me to develop solutions 
+                that are both functional and visually compelling.
               </p>
               <p className="text-sm leading-relaxed">
-                Those who know me would say I'm funny and outgoing, yet I deeply appreciate solitude. 
-                I embrace emptiness and have never feared boredom—it's often where my best ideas come to life.
+                I believe in the power of interdisciplinary approaches to solve complex problems.
+                My background in both CS and Biology gives me a unique perspective on how technology
+                can enhance our understanding of natural systems and improve human experiences.
               </p>
             </div>
             
@@ -81,23 +83,25 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Features */}
+            {/* Portfolio */}
             <div>
-              <h3 className="font-serif font-bold text-lg mb-4">Features</h3>
+              <h3 className="font-serif font-bold text-lg mb-4">Portfolio</h3>
               <ul className="space-y-3">
-                <li><Link to="/section/technology" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Tech Articles</Link></li>
-                <li><Link to="/section/science" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Biology Research</Link></li>
-                <li><Link to="/dashboard" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Dashboard</Link></li>
+                <li><Link to="/section/design" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Digital Design</Link></li>
+                <li><Link to="/section/photography" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Photography</Link></li>
+                <li><Link to="/section/video" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Video Editing</Link></li>
+                <li><Link to="/section/cs" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">CS Projects</Link></li>
+                <li><Link to="/section/biology" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Biology Research</Link></li>
               </ul>
             </div>
             
-            {/* News */}
+            {/* Recent Work */}
             <div>
-              <h3 className="font-serif font-bold text-lg mb-4">News</h3>
+              <h3 className="font-serif font-bold text-lg mb-4">Recent Work</h3>
               <ul className="space-y-3">
-                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Planning solo trip to Japan</li>
-                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Working on SaaS optimization</li>
-                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Latest football tournament: Semi-finalist</li>
+                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">UX Design for Biotech Interface</li>
+                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Photo Series: Urban Landscapes</li>
+                <li className="text-sm text-nyt-gray-dark dark:text-nyt-gray-light">Video Project: Scientific Visualization</li>
               </ul>
             </div>
           </div>
@@ -107,7 +111,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center pt-6">
           <div className="mb-4 md:mb-0">
-            <h2 className="font-broadway font-bold text-xl">The Thought</h2>
+            <h2 className="font-broadway font-bold text-xl">Jatin Dangi</h2>
           </div>
           
           <div className="text-center md:text-right">

@@ -66,7 +66,7 @@ const Index = () => {
                   id={featuredArticle.id}
                   title={featuredArticle.title}
                   description={featuredArticle.subheading || featuredArticle.content[0] || ''}
-                  imageUrl={featuredArticle.imageUrl || 'https://images.unsplash.com/photo-1518005068251-37900150dfca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'}
+                  imageUrl={featuredArticle.imageUrl || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'}
                   category={featuredArticle.category}
                   date={featuredArticle.date}
                   author={featuredArticle.author}
@@ -74,10 +74,10 @@ const Index = () => {
               </section>
             )}
             
-            {/* Top Stories */}
+            {/* Portfolio Highlights */}
             {articles.length > 1 && (
               <section className="container-fluid py-8">
-                <SectionDivider title="Top Stories" className="mb-8" />
+                <SectionDivider title="Portfolio Highlights" className="mb-8" />
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {articles.slice(1, 4).map(article => (
@@ -86,7 +86,7 @@ const Index = () => {
                       id={article.id}
                       title={article.title}
                       description={article.subheading || article.content[0] || ''}
-                      imageUrl={article.imageUrl || 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'}
+                      imageUrl={article.imageUrl || 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'}
                       category={article.category}
                       date={article.date}
                       author={article.author}
@@ -113,7 +113,7 @@ const Index = () => {
                         key={article.id} 
                         id={article.id}
                         title={article.title}
-                        imageUrl={article.imageUrl || 'https://images.unsplash.com/photo-1594971475674-6a93cc7b0834?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80'}
+                        imageUrl={article.imageUrl || 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80'}
                         category={article.category}
                         date={article.date}
                         author={article.author}
@@ -127,8 +127,8 @@ const Index = () => {
 
             {articles.length === 0 && (
               <section className="container-fluid py-16 text-center">
-                <h2 className="font-serif text-2xl mb-4">No articles published yet</h2>
-                <p className="text-nyt-gray-dark">Visit the Editor to create and publish your first article.</p>
+                <h2 className="font-serif text-2xl mb-4">No projects published yet</h2>
+                <p className="text-nyt-gray-dark">Visit the Editor to create and publish your first project.</p>
               </section>
             )}
           </>
