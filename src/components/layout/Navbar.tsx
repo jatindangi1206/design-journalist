@@ -58,7 +58,7 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <Link to="/subscribe" className="text-caption font-sans text-nyt-blue animated-link">Subscribe to Updates</Link>
+            <Link to="/subscribe" className="text-caption font-sans text-nyt-blue animated-link">Subscribe Now</Link>
           )}
         </div>
       </div>
@@ -81,7 +81,7 @@ const Navbar = () => {
 
             {/* Center: Logo */}
             <Link to="/" className="absolute left-1/2 transform -translate-x-1/2">
-              <h1 className="font-broadway font-bold text-2xl tracking-tight animate-fade-in">Prince of Mahmudabad</h1>
+              <h1 className="font-broadway font-bold text-2xl tracking-tight animate-fade-in">The Thought</h1>
             </Link>
 
             {/* Right: Icons */}
@@ -115,14 +115,14 @@ const Navbar = () => {
 
           {/* Secondary Navigation */}
           <div className="hidden md:flex justify-center mt-4 space-x-8 overflow-x-auto">
-            <Link to="/section/heritage" className="nav-link">Heritage</Link>
-            <Link to="/section/royal-history" className="nav-link">Royal History</Link>
-            <Link to="/section/documentaries" className="nav-link">Documentaries</Link>
-            <Link to="/section/career" className="nav-link">Career</Link>
-            <Link to="/section/media" className="nav-link">Media</Link>
-            <Link to="/section/philanthropy" className="nav-link">Philanthropy</Link>
-            <Link to="/section/events" className="nav-link">Events</Link>
-            <Link to="/section/gallery" className="nav-link">Gallery</Link>
+            <Link to="/section/politics" className="nav-link">Politics</Link>
+            <Link to="/section/business" className="nav-link">Business</Link>
+            <Link to="/section/technology" className="nav-link">Technology</Link>
+            <Link to="/section/science" className="nav-link">Science</Link>
+            <Link to="/section/health" className="nav-link">Health</Link>
+            <Link to="/section/arts" className="nav-link">Arts</Link>
+            <Link to="/section/style" className="nav-link">Style</Link>
+            <Link to="/section/travel" className="nav-link">Travel</Link>
             {isLoggedIn && (
               <Link to="/dashboard" className="nav-link text-nyt-red">Dashboard</Link>
             )}
@@ -150,14 +150,14 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col space-y-6">
-            <Link to="/section/heritage" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Heritage</Link>
-            <Link to="/section/royal-history" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Royal History</Link>
-            <Link to="/section/documentaries" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Documentaries</Link>
-            <Link to="/section/career" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Career</Link>
-            <Link to="/section/media" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Media</Link>
-            <Link to="/section/philanthropy" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Philanthropy</Link>
-            <Link to="/section/events" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Events</Link>
-            <Link to="/section/gallery" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Gallery</Link>
+            <Link to="/section/politics" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Politics</Link>
+            <Link to="/section/business" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Business</Link>
+            <Link to="/section/technology" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Technology</Link>
+            <Link to="/section/science" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Science</Link>
+            <Link to="/section/health" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Health</Link>
+            <Link to="/section/arts" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Arts</Link>
+            <Link to="/section/style" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Style</Link>
+            <Link to="/section/travel" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Travel</Link>
             
             {isLoggedIn && (
               <Link to="/dashboard" className="text-headline font-serif text-nyt-red hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Dashboard</Link>
