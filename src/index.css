@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,7 +18,7 @@
 
 @layer base {
   :root {
-    --background: 45 33% 98%; /* royal-cream */
+    --background: 0 0% 96.5%;
     --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
@@ -28,10 +27,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    --primary: 43 65% 52%; /* royal-gold */
+    --primary: 354 100% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 212 63% 23%; /* royal-blue */
+    --secondary: 207 47% 38%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 89%;
@@ -43,7 +42,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 43 65% 52%; /* royal-gold */
+    --border: 0 0% 89%;
     --input: 0 0% 89%;
     --ring: 0 0% 7%;
 
@@ -59,18 +58,18 @@
   }
 
   body {
-    @apply bg-royal-cream text-nyt-black font-serif antialiased;
+    @apply bg-nyt-background text-nyt-black font-serif antialiased;
   }
   
   /* First letter styling for articles */
   .article-content > p:first-of-type::first-letter {
-    @apply text-7xl font-bold float-left mr-2 mt-1 text-royal-gold;
+    @apply text-7xl font-bold float-left mr-2 mt-1;
     line-height: 0.8;
   }
   
   /* Pull quote styling */
   .pull-quote {
-    @apply text-2xl italic border-l-4 border-royal-gold pl-6 my-8 max-w-2xl mx-auto text-nyt-gray-dark;
+    @apply text-2xl italic border-l-4 border-nyt-gray-light pl-6 my-8 max-w-2xl mx-auto text-nyt-gray-dark;
     line-height: 1.4;
   }
   
@@ -80,7 +79,7 @@
   }
   
   .animated-link::after {
-    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-royal-gold origin-bottom-right transition-transform duration-300;
+    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-nyt-blue origin-bottom-right transition-transform duration-300;
   }
   
   .animated-link:hover::after {
@@ -100,31 +99,6 @@
   .section-transition {
     @apply transition-all duration-500 ease-in-out;
   }
-
-  /* Royal header decoration */
-  .royal-header::before,
-  .royal-header::after {
-    @apply content-[''] inline-block w-8 h-5 bg-contain bg-no-repeat bg-center opacity-60 mx-2;
-    background-image: url('https://i.ibb.co/CwHnPPw/royal-ornament.png');
-  }
-
-  /* Royal divider */
-  .royal-divider {
-    @apply relative flex items-center;
-  }
-  
-  .royal-divider::before,
-  .royal-divider::after {
-    @apply content-[''] flex-grow border-t border-royal-gold opacity-50;
-  }
-  
-  .royal-divider::before {
-    @apply mr-4;
-  }
-  
-  .royal-divider::after {
-    @apply ml-4;
-  }
 }
 
 @layer components {
@@ -133,52 +107,25 @@
   }
   
   .nav-link {
-    @apply text-nyt-black hover:text-royal-gold transition-colors duration-200 text-sm uppercase tracking-wide font-sans;
+    @apply text-nyt-black hover:text-nyt-blue transition-colors duration-200 text-sm uppercase tracking-wide font-sans;
   }
   
   .heading-divider {
-    @apply w-full h-px bg-royal-gold my-6 opacity-70;
-  }
-
-  /* Royal button */
-  .royal-button {
-    @apply px-6 py-3 bg-royal-gold text-white font-sans uppercase tracking-wide text-sm transition-all duration-300 hover:bg-royal-burgundy hover:shadow-md;
+    @apply w-full h-px bg-nyt-gray-light my-6;
   }
 
   /* Article content with typography */
   .article-typography {
     @apply prose prose-lg max-w-none prose-headings:font-serif prose-headings:font-bold 
     prose-p:text-nyt-black prose-p:font-serif prose-p:leading-relaxed
-    prose-a:text-nyt-blue prose-a:no-underline hover:prose-a:text-royal-gold
-    prose-blockquote:border-l-royal-gold prose-blockquote:text-nyt-gray-dark prose-blockquote:italic
+    prose-a:text-nyt-blue prose-a:no-underline hover:prose-a:text-nyt-red
+    prose-blockquote:border-l-nyt-gray-light prose-blockquote:text-nyt-gray-dark prose-blockquote:italic
     prose-img:rounded-none prose-img:mx-auto;
-  }
-
-  /* Royal card */
-  .royal-card {
-    @apply bg-white border border-royal-gold/20 shadow-md hover:shadow-lg transition-shadow duration-300;
-  }
-
-  /* Royal section */
-  .royal-section {
-    @apply bg-royal-cream border-y border-royal-gold/30 py-16;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-  
-  .text-royal-gradient {
-    @apply bg-gradient-to-r from-royal-gold to-royal-burgundy bg-clip-text text-transparent;
-  }
-
-  .border-royal {
-    @apply border-royal-gold/50;
-  }
-  
-  .royal-shadow {
-    box-shadow: 0 4px 20px -5px rgba(212, 175, 55, 0.4);
   }
 }

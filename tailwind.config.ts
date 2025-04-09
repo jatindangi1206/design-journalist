@@ -73,18 +73,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated royal color scheme
-				'nyt-red': '#8B0000', // Darker royal red
-				'nyt-blue': '#14375F', // Deep navy blue
+				// Custom colors
+				'nyt-red': '#D0021B',
+				'nyt-blue': '#326891',
 				'nyt-black': '#121212',
 				'nyt-gray-dark': '#333333',
 				'nyt-gray': '#666666',
 				'nyt-gray-light': '#E2E2E2',
-				'nyt-background': '#F9F7F1', // Cream parchment color
-				'royal-gold': '#D4AF37', // Royal gold
-				'royal-purple': '#4B0082', // Royal purple
-				'royal-burgundy': '#800020', // Royal burgundy
-				'royal-cream': '#F9F7F1', // Royal cream/parchment
+				'nyt-background': '#F6F6F6',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -155,9 +151,6 @@ export default {
 			spacing: {
 				'golden': '1.618em',
 			},
-			backgroundImage: {
-				'royal-pattern': "url('https://i.ibb.co/1zsyPd4/royal-pattern.png')",
-			},
 			gridTemplateColumns: {
 				'article-desktop': 'repeat(5, 1fr)',
 				'article-tablet': 'repeat(3, 1fr)',
@@ -168,9 +161,9 @@ export default {
 					css: {
 						color: '#121212',
 						a: {
-							color: '#14375F',
+							color: '#326891',
 							'&:hover': {
-								color: '#D4AF37',
+								color: '#555555',
 							},
 						},
 						h1: {
@@ -190,7 +183,7 @@ export default {
 							fontWeight: '600',
 						},
 						blockquote: {
-							borderLeftColor: '#D4AF37',
+							borderLeftColor: '#E2E2E2',
 							fontStyle: 'italic',
 							color: '#333333',
 						},
