@@ -26,18 +26,7 @@ import { toast } from "sonner";
 const queryClient = new QueryClient();
 
 const App = () => {
-  useEffect(() => {
-    // Test the Supabase connection on app load
-    testSupabaseConnection()
-      .then((connected) => {
-        if (connected) {
-          console.log('Supabase connection verified');
-        } else {
-          toast.error('Could not connect to Supabase. Please check your credentials and network.');
-        }
-      });
-  }, []);
-
+  // Moved useEffect to a separate component
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -45,6 +34,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <SupabaseConnectionTest />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/article/:id" element={<Article />} />
@@ -91,6 +81,23 @@ const App = () => {
       </TooltipProvider>
     </QueryClientProvider>
   );
+};
+
+// Separated the Supabase connection test into its own component
+const SupabaseConnectionTest = () => {
+  useEffect(() => {
+    // Test the Supabase connection on app load
+    testSupabaseConnection()
+      .then((connected) => {
+        if (connected) {
+          console.log('Supabase connection verified');
+        } else {
+          toast.error('Could not connect to Supabase. Please check your credentials and network.');
+        }
+      });
+  }, []);
+
+  return null;
 };
 
 export default App;
