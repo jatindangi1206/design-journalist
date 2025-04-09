@@ -12,6 +12,12 @@ import Editor from "./pages/Editor";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Section from "./pages/Section";
+import DigitalDesign from "./pages/DigitalDesign";
+import Photography from "./pages/Photography";
+import VideoEditing from "./pages/VideoEditing";
+import CSProjects from "./pages/CSProjects";
+import BiologyResearch from "./pages/BiologyResearch";
+import AboutMe from "./pages/AboutMe";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { testSupabaseConnection } from "./lib/supabase";
@@ -68,6 +74,14 @@ const App = () => {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/section/:category" element={<Section />} />
+              
+              {/* New dedicated pages for each section */}
+              <Route path="/section/design" element={<DigitalDesign />} />
+              <Route path="/section/photography" element={<Photography />} />
+              <Route path="/section/video" element={<VideoEditing />} />
+              <Route path="/section/cs" element={<CSProjects />} />
+              <Route path="/section/biology" element={<BiologyResearch />} />
+              <Route path="/section/about" element={<AboutMe />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
