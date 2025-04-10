@@ -17,7 +17,7 @@ import Photography from "./pages/Photography";
 import VideoEditing from "./pages/VideoEditing";
 import CSProjects from "./pages/CSProjects";
 import BiologyResearch from "./pages/BiologyResearch";
-import AboutMe from "./pages/AboutMe";
+import Writings from "./pages/Writings";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { testSupabaseConnection } from "./lib/supabase";
@@ -36,7 +36,8 @@ const App = () => {
           <BrowserRouter>
             <SupabaseConnectionTest />
             <Routes>
-              <Route path="/" element={<Index />} />
+              <Route path="/" element={<Writings />} />
+              <Route path="/home" element={<Index />} />
               <Route path="/article/:id" element={<Article />} />
               <Route 
                 path="/editor" 
@@ -65,13 +66,13 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/section/:category" element={<Section />} />
               
-              {/* New dedicated pages for each section */}
+              {/* Dedicated pages for each section */}
               <Route path="/section/design" element={<DigitalDesign />} />
               <Route path="/section/photography" element={<Photography />} />
               <Route path="/section/video" element={<VideoEditing />} />
               <Route path="/section/cs" element={<CSProjects />} />
               <Route path="/section/biology" element={<BiologyResearch />} />
-              <Route path="/section/about" element={<AboutMe />} />
+              <Route path="/section/writings" element={<Writings />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

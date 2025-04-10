@@ -87,6 +87,7 @@ const Footer = () => {
             <div>
               <h3 className="font-serif font-bold text-lg mb-4">Portfolio</h3>
               <ul className="space-y-3">
+                <li><Link to="/" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Writings</Link></li>
                 <li><Link to="/section/design" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Digital Design</Link></li>
                 <li><Link to="/section/photography" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Photography</Link></li>
                 <li><Link to="/section/video" className="text-nyt-gray hover:text-nyt-blue text-sm font-sans animated-link">Video Editing</Link></li>

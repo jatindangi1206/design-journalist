@@ -115,12 +115,12 @@ const Navbar = () => {
 
           {/* Secondary Navigation */}
           <div className="hidden md:flex justify-center mt-4 space-x-8 overflow-x-auto">
+            <Link to="/" className="nav-link">Writings</Link>
             <Link to="/section/design" className="nav-link">Digital Design</Link>
             <Link to="/section/photography" className="nav-link">Photography</Link>
             <Link to="/section/video" className="nav-link">Video Editing</Link>
             <Link to="/section/cs" className="nav-link">CS Projects</Link>
             <Link to="/section/biology" className="nav-link">Biology Research</Link>
-            <Link to="/section/about" className="nav-link">About Me</Link>
             {isLoggedIn && (
               <Link to="/dashboard" className="nav-link text-nyt-red">Dashboard</Link>
             )}
@@ -148,12 +148,12 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-col space-y-6">
+            <Link to="/" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Writings</Link>
             <Link to="/section/design" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Digital Design</Link>
             <Link to="/section/photography" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Photography</Link>
             <Link to="/section/video" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Video Editing</Link>
             <Link to="/section/cs" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>CS Projects</Link>
             <Link to="/section/biology" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Biology Research</Link>
-            <Link to="/section/about" className="text-headline font-serif hover:text-nyt-blue transition-colors" onClick={toggleMenu}>About Me</Link>
             
             {isLoggedIn && (
               <Link to="/dashboard" className="text-headline font-serif text-nyt-red hover:text-nyt-blue transition-colors" onClick={toggleMenu}>Dashboard</Link>
