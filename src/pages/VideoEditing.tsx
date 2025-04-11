@@ -8,6 +8,16 @@ import { Play, Film, Scissors, FastForward, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
+// Tarantino color palette
+const tarantinoColors = {
+  gold: "#fccc04",
+  lightSalmon: "#f1ac8c",
+  saddleBrown: "#644d11",
+  darkKhaki: "#a79a55",
+  thistle: "#bbb4d6",
+  midnightBlue: "#252c4c"
+};
+
 const VideoEditing = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   
@@ -109,22 +119,22 @@ const VideoEditing = () => {
         />
         
         {/* Tarantino-style Intro */}
-        <section className="py-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[#ea384c]/10 mix-blend-overlay"></div>
+        <section className="py-16 relative overflow-hidden" style={{backgroundColor: tarantinoColors.midnightBlue}}>
+          <div className="absolute inset-0 bg-black/20 mix-blend-overlay"></div>
           <div className="container-fluid relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-broadway text-6xl text-[#ea384c] mb-8 tracking-tighter text-center">PULP FICTION MEETS DIGITAL</h2>
+              <h2 className="font-broadway text-6xl mb-8 tracking-tighter text-center" style={{color: tarantinoColors.gold}}>PULP FICTION MEETS DIGITAL</h2>
               <div className="max-w-3xl mx-auto">
-                <p className="text-xl mb-6 font-serif leading-relaxed">
+                <p className="text-xl mb-6 font-serif leading-relaxed text-white">
                   My approach to video editing is like a Tarantino film — bold, unconventional, and often 
                   non-linear. I find beauty in the unexpected cuts, dramatic transitions, and carefully 
                   crafted visual tension.
                 </p>
-                <p className="text-xl font-serif leading-relaxed">
+                <p className="text-xl font-serif leading-relaxed" style={{color: tarantinoColors.lightSalmon}}>
                   Each project is a chance to tell a story with a distinctive visual language, 
                   whether it's an educational piece, a commercial, or an artistic experiment.
                 </p>
@@ -134,7 +144,7 @@ const VideoEditing = () => {
         </section>
         
         {/* Featured Projects - Chapter Style */}
-        <section className="py-16 bg-[#222]">
+        <section className="py-16" style={{backgroundColor: tarantinoColors.saddleBrown}}>
           <div className="container-fluid">
             <motion.div 
               initial={{ opacity: 0 }}
@@ -142,7 +152,7 @@ const VideoEditing = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-broadway text-5xl text-white mb-12 text-center">CHAPTER ONE: FEATURED PROJECTS</h2>
+              <h2 className="font-broadway text-5xl mb-12 text-center" style={{color: tarantinoColors.gold}}>CHAPTER ONE: FEATURED PROJECTS</h2>
             </motion.div>
             
             <motion.div 
@@ -160,7 +170,7 @@ const VideoEditing = () => {
                     className="flex flex-col"
                     variants={itemVariants}
                   >
-                    <div className="relative aspect-video overflow-hidden mb-4 border-4 border-[#ea384c]">
+                    <div className="relative aspect-video overflow-hidden mb-4" style={{borderColor: tarantinoColors.gold, borderWidth: "4px"}}>
                       <iframe 
                         className="absolute inset-0 w-full h-full"
                         src={project.videoUrl}
@@ -169,9 +179,9 @@ const VideoEditing = () => {
                         allowFullScreen
                       ></iframe>
                     </div>
-                    <h3 className="font-broadway text-xl mb-2 text-[#ea384c]">{project.title}</h3>
-                    <p className="text-sm text-gray-300 mb-2">{project.description}</p>
-                    <div className="flex items-center space-x-3 text-xs text-gray-400 mt-auto">
+                    <h3 className="font-broadway text-xl mb-2" style={{color: tarantinoColors.gold}}>{project.title}</h3>
+                    <p className="text-sm mb-2 text-white">{project.description}</p>
+                    <div className="flex items-center space-x-3 text-xs mt-auto" style={{color: tarantinoColors.thistle}}>
                       <span className="font-bold uppercase">{project.category}</span>
                       <span>•</span>
                       <span>{project.duration}</span>
@@ -191,7 +201,7 @@ const VideoEditing = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-broadway text-5xl text-white mb-12 text-center">CHAPTER TWO: THE OTHER STUFF</h2>
+              <h2 className="font-broadway text-5xl mb-12 text-center" style={{color: tarantinoColors.lightSalmon}}>CHAPTER TWO: THE OTHER STUFF</h2>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -208,9 +218,13 @@ const VideoEditing = () => {
                     onClick={() => handleProjectClick(project.id)}
                   >
                     <Card className={cn(
-                      "overflow-hidden bg-black border-2 cursor-pointer transform transition-all duration-300",
-                      selectedProject === project.id ? "border-[#ea384c] scale-105" : "border-gray-800 hover:border-gray-600"
-                    )}>
+                      "overflow-hidden cursor-pointer transform transition-all duration-300",
+                      selectedProject === project.id ? "scale-105" : "hover:scale-102"
+                    )} style={{
+                      backgroundColor: "black", 
+                      borderWidth: "2px",
+                      borderColor: selectedProject === project.id ? tarantinoColors.gold : tarantinoColors.darkKhaki
+                    }}>
                       <CardContent className="p-0">
                         <div className="relative">
                           <div className="aspect-video overflow-hidden">
@@ -220,35 +234,39 @@ const VideoEditing = () => {
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                             />
                             <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <div className="rounded-full bg-[#ea384c]/80 p-3">
-                                <Play className="h-8 w-8 text-white" />
+                              <div className="rounded-full p-3" style={{backgroundColor: `${tarantinoColors.gold}CC`}}>
+                                <Play className="h-8 w-8 text-black" />
                               </div>
                             </div>
                           </div>
                           {selectedProject === project.id && (
                             <motion.div 
-                              className="absolute top-2 right-2 bg-[#ea384c] p-1 rounded-full"
+                              className="absolute top-2 right-2 p-1 rounded-full"
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
                               transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                              style={{backgroundColor: tarantinoColors.gold}}
                             >
-                              <AlertCircle className="h-4 w-4 text-white" />
+                              <AlertCircle className="h-4 w-4 text-black" />
                             </motion.div>
                           )}
                         </div>
                         <div className="p-5 bg-black">
-                          <h3 className="font-broadway text-xl mb-2 text-white group-hover:text-[#ea384c] transition-colors">{project.title}</h3>
+                          <h3 className="font-broadway text-xl mb-2 transition-colors" 
+                            style={{color: selectedProject === project.id ? tarantinoColors.gold : "white"}}
+                          >{project.title}</h3>
                           {selectedProject === project.id && (
                             <motion.p 
-                              className="text-sm text-gray-300 mb-4"
+                              className="text-sm mb-4"
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               transition={{ duration: 0.3 }}
+                              style={{color: tarantinoColors.thistle}}
                             >
                               {project.description}
                             </motion.p>
                           )}
-                          <div className="flex items-center space-x-3 text-xs text-gray-500">
+                          <div className="flex items-center space-x-3 text-xs" style={{color: tarantinoColors.darkKhaki}}>
                             <span className="uppercase">{project.category}</span>
                             <span>•</span>
                             <span>{project.duration}</span>
@@ -263,7 +281,7 @@ const VideoEditing = () => {
         </section>
         
         {/* Process Section - Film Reel Style */}
-        <section className="py-16 bg-black relative">
+        <section className="py-16 relative" style={{backgroundColor: tarantinoColors.midnightBlue}}>
           <div className="absolute top-0 left-0 w-full h-4 bg-[url('https://www.transparenttextures.com/patterns/film.png')] opacity-30"></div>
           <div className="absolute bottom-0 left-0 w-full h-4 bg-[url('https://www.transparenttextures.com/patterns/film.png')] opacity-30"></div>
           
@@ -274,7 +292,7 @@ const VideoEditing = () => {
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-broadway text-5xl mb-12 text-center text-[#ea384c]">THE EDITING PROCESS</h2>
+              <h2 className="font-broadway text-5xl mb-12 text-center" style={{color: tarantinoColors.gold}}>THE EDITING PROCESS</h2>
               
               <div className="space-y-12">
                 <motion.div 
@@ -284,12 +302,12 @@ const VideoEditing = () => {
                   transition={{ duration: 0.5, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-[#ea384c] p-6 rounded-full">
-                    <Film className="h-12 w-12 text-white" />
+                  <div className="p-6 rounded-full" style={{backgroundColor: tarantinoColors.gold}}>
+                    <Film className="h-12 w-12 text-black" />
                   </div>
                   <div className="md:flex-1">
                     <h3 className="font-broadway text-2xl mb-3 text-white">SCENE 1: PRE-PRODUCTION</h3>
-                    <p className="text-gray-300">Every great edit starts before the camera rolls. Storyboarding, shot lists, and 
+                    <p style={{color: tarantinoColors.lightSalmon}}>Every great edit starts before the camera rolls. Storyboarding, shot lists, and 
                       visual references lay the groundwork for what will eventually become the final cut.</p>
                   </div>
                 </motion.div>
@@ -301,12 +319,12 @@ const VideoEditing = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <div className="md:order-2 bg-[#ea384c] p-6 rounded-full">
-                    <Scissors className="h-12 w-12 text-white" />
+                  <div className="md:order-2 p-6 rounded-full" style={{backgroundColor: tarantinoColors.gold}}>
+                    <Scissors className="h-12 w-12 text-black" />
                   </div>
                   <div className="md:flex-1">
                     <h3 className="font-broadway text-2xl mb-3 text-white">SCENE 2: THE ROUGH CUT</h3>
-                    <p className="text-gray-300">This is where the magic begins. From raw footage to the first assembly, 
+                    <p style={{color: tarantinoColors.lightSalmon}}>This is where the magic begins. From raw footage to the first assembly, 
                       this phase is all about finding the rhythm of the story and deciding which moments deserve the spotlight.</p>
                   </div>
                 </motion.div>
@@ -318,12 +336,12 @@ const VideoEditing = () => {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-[#ea384c] p-6 rounded-full">
-                    <FastForward className="h-12 w-12 text-white" />
+                  <div className="p-6 rounded-full" style={{backgroundColor: tarantinoColors.gold}}>
+                    <FastForward className="h-12 w-12 text-black" />
                   </div>
                   <div className="md:flex-1">
                     <h3 className="font-broadway text-2xl mb-3 text-white">SCENE 3: FINAL CUT</h3>
-                    <p className="text-gray-300">Color grading, sound design, visual effects, and music all come together 
+                    <p style={{color: tarantinoColors.lightSalmon}}>Color grading, sound design, visual effects, and music all come together 
                       in this phase. It's about the details that transform a good edit into something memorable.</p>
                   </div>
                 </motion.div>
@@ -341,10 +359,10 @@ const VideoEditing = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-broadway text-3xl text-white mb-4">DIRECTED BY</h2>
-            <p className="text-2xl text-[#ea384c] font-serif mb-8">YOUR NAME</p>
+            <p className="text-2xl font-serif mb-8" style={{color: tarantinoColors.gold}}>YOUR NAME</p>
             
             <div className="max-w-lg mx-auto">
-              <p className="text-gray-400 italic">"The right cut at the right moment can create magic. That's what I'm always looking for."</p>
+              <p className="italic" style={{color: tarantinoColors.thistle}}>"The right cut at the right moment can create magic. That's what I'm always looking for."</p>
             </div>
           </motion.div>
         </section>
